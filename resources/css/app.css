@@ -7,3 +7,21 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+/* Fix navbar */
+.navbar-collapse {
+    display: flex !important;
+    visibility: visible !important;
+}
+
+.collapse {
+    visibility: visible !important;
+}
+
+.navbar-nav {
+    display: flex !important;
+    flex-direction: row !important;
+}
+
+.navbar-toggler {
+    display: none !important;
+}
