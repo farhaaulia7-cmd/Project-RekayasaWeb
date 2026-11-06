@@ -24,7 +24,7 @@ body {
     z-index: 100;
     padding: 20px 0;
     background-color: #212529;
-    color: #fff;
+    color: #fff; 
 }
 
 .admin-sidebar .nav-link {
@@ -62,6 +62,7 @@ body {
 <body>
     <div class="admin-sidebar shadow">
         <h4 class="text-center fw-bold text-white pb-3 border-bottom border-secondary">Admin Panel</h4>
+        
         <ul class="nav flex-column mt-3">
             <li class="nav-item">
                 <a class="nav-link text-white" href="{{ route('admin.home') }}">Home</a>
@@ -69,15 +70,23 @@ body {
             <li class="nav-item">
                 <a class="nav-link text-white" href="{{ route('admin.projects.index') }}">Project</a>
             </li>
+            
+            <li class="nav-item mt-4 px-3">
+                <form action="{{ route('action.logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-danger w-100">Logout</button>
+                </form>
+            </li>
         </ul>
     </div>
+
     <div class="admin-content">
-       <div class="d-flex justify-content-between align-items-center px-4 py-3 mb-4 rounded shadow-sm header-card-dark">
+       <div class="d-flex justify-content-between align-items-center px-4 py-3 mb-4 rounded shadow-sm bg-white">
             <h3 class="fw-bold mb-0">Dashboard</h3>
-            <span class="fw-semibold">Halo, Administrator</span>
+            <span class="fw-semibold">Halo,  {{ Auth::user()->name }} </span>
         </div>
         @yield('content')
     </div>
     @stack('scripts')
 </body>
-</html> 
+</html>

@@ -26,7 +26,7 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label class="form-label">Gambar (Biarkan kosong jika tidak ingin mengubah)</label>
+                <label class="form-label">Gambar</label>
                 <input type="file" name="image" class="form-control">
                 @if($project->image)
                     <div class="mt-2">
