@@ -27,6 +27,9 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
         return view('admin.home');
     })->name('home');
 
+    Route::get('/projects/pdf', [AdminProjectController::class, 'exportPdf'])->name('projects.pdf');
+    Route::resource('projects', AdminProjectController::class);
+
     Route::get('/projects', [AdminProjectController::class, 'index'])->name('projects.index');
     Route::get('/projects/create', [AdminProjectController::class, 'create'])->name('projects.create');
     Route::post('/projects', [AdminProjectController::class, 'store'])->name('projects.store');

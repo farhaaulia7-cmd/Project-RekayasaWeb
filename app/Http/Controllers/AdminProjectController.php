@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\AdminProjectsController;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AdminProjectController extends Controller
 {
@@ -120,5 +122,19 @@ class AdminProjectController extends Controller
         $project->delete();
 
         return redirect()->route('admin.projects.index')->with('success', 'Data project berhasil dihapus.');
+    }
+
+    public function exportPdf()
+    {
+        $projects = Project::all();
+
+        $pdf = Pdf::loadView('admin.projects.pdf', compact('projects'))
+            ->setpaper('a4','landscape')
+            ->setOptions([
+                'chroot' => public_path(),
+                'isRemotEnabled' => true,
+            ]);
+
+        return $pdf->stream('projects.pdf');
     }
 }
